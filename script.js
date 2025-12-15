@@ -5,6 +5,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const month = today.getMonth(); // 0-indexed
 
     renderCalendar(year, month, calendarWrapper);
+
+    // ハンバーガーメニュー制御
+    const hamburger = document.getElementById('hamburger-menu');
+    const nav = document.getElementById('main-nav');
+
+    if (hamburger && nav) {
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('nav-active');
+            hamburger.classList.toggle('active');
+        });
+
+        // メニューリンクをクリックしたら閉じる
+        const navLinks = nav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('nav-active');
+                hamburger.classList.remove('active');
+            });
+        });
+    }
 });
 
 function renderCalendar(year, month, wrapper) {
@@ -12,10 +32,10 @@ function renderCalendar(year, month, wrapper) {
     const firstDay = new Date(year, month, 1).getDay();
     // 月の日数
     const daysInMonth = new Date(year, month + 1, 0).getDate();
-    
+
     // 月名表示
     const monthNames = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
-    
+
     let html = `
         <div class="calendar-header">
             <span>${year}年 ${monthNames[month]}</span>
@@ -40,14 +60,14 @@ function renderCalendar(year, month, wrapper) {
         const currentDate = new Date(year, month, day);
         const dayOfWeek = currentDate.getDay();
         const isToday = currentDate.toDateString() === new Date().toDateString();
-        
+
         let statusClass = '';
         let statusDot = '';
 
         // 日曜、木曜は休み、それ以外はランダムで予約状況を表示（デモ用）
         // ただし本日は考慮
         if (dayOfWeek === 0 || dayOfWeek === 4) {
-             // 休み（何も表示しない）
+            // 休み（何も表示しない）
         } else {
             // ランダムに予約可、満員を割り振り
             // ドラフト用なので固定パターンでもよいが、ランダム感を出す
@@ -58,7 +78,7 @@ function renderCalendar(year, month, wrapper) {
                 statusDot = '<span class="status-dot ng"></span>';
             }
         }
-        
+
         html += `
             <div class="cal-cell cal-day ${isToday ? 'today' : ''}">
                 ${day}

@@ -105,17 +105,26 @@ li {
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    /* アイコンと文字の間隔 */
     font-family: var(--font-heading);
     /* Conceptと同じフォント */
     font-size: 2.5rem;
     /* Conceptと同じ大きさ */
+    font-weight: 600;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* アイコンと文字の間隔 */
     color: var(--color-accent);
     /* 背景色と同じ薄ピンク */
-    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.logo a:hover {
+    opacity: 0.8;
 }
 
 .logo-icon {
@@ -284,6 +293,72 @@ li {
     color: var(--color-primary-dark);
     margin-bottom: 1rem;
 }
+
+/* Effects */
+.effects-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.effects-group {
+    background: white;
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+}
+
+.effects-group h3 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--color-bg-secondary);
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.effects-group.beauty h3 {
+    color: var(--color-accent);
+}
+
+.effects-intro {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+}
+
+.symptom-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.symptom-list li {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.effects-group.beauty .symptom-list li {
+    background-color: #FFF5F6;
+    color: #D68C90;
+}
+
+@media (max-width: 768px) {
+    .effects-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
 
 /* Menu */
 .menu-list {
@@ -592,6 +667,53 @@ li {
     color: white;
     padding: 2rem 0;
     font-size: 0.9rem;
+}
+
+
+/* Referral Coupon */
+.referral-coupon {
+    margin-top: 4rem;
+    padding: 3px;
+    background: linear-gradient(45deg, var(--color-accent), var(--color-gold));
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+}
+
+.coupon-content {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 9px;
+    /* inner radius slightly smaller */
+}
+
+.coupon-content h3 {
+    font-family: var(--font-heading);
+    color: var(--color-primary-dark);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.highlight {
+    background: linear-gradient(transparent 70%, #fff2f3 70%);
+}
+
+.coupon-text {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+}
+
+.price-off {
+    font-weight: 700;
+    color: var(--color-accent);
+    font-size: 1.6rem;
+    font-family: var(--font-heading);
+    margin: 0 5px;
+}
+
+.coupon-sub {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
 }
 
 
